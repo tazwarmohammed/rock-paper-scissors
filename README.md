@@ -1,1 +1,1 @@
-A simple Rock-Paper-Scissors game against computer
+A simple Rock-Paper-Scissors game against computer. HTML and Javascript is implemented except CSS. Will do it soon.
