@@ -47,14 +47,14 @@ function game(e) {
     document.querySelector('.playerScore').innerText = myScore;
     document.querySelector('.enemyScore').innerText = computerScore;
     if(myScore === 5) {
-        document.querySelector('.seriesResult').innerText = 'You won the series!';
+        document.querySelector('.seriesResult').innerText = 'You won the series! Please press the reset button to start another series.';
         document.querySelectorAll('.play').forEach((button) => {
             button.removeEventListener('click', game);
         });
         // document.querySelector('.paper').removeEventListener('click', game);
         // document.querySelector('.scissors').removeEventListener('click', game);
     } else if(computerScore === 5) {
-        document.querySelector('.seriesResult').innerText = 'You lost the series!';
+        document.querySelector('.seriesResult').innerText = 'You lost the series! Please press the reset button to start another series.';
         document.querySelectorAll('.play').forEach((button) => {
             button.removeEventListener('click', game);
         });
