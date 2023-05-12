@@ -42,31 +42,43 @@ function game(e) {
     const computerSelection = getComputerChoice();
     document.querySelector('.playerMove').innerText = e.target.innerText;
     document.querySelector('.enemyMove').innerText = computerSelection;
-    if(playerSelection === null) {
-        document.querySelector('.startGame').innerText = 'Press the play button to start playing! First one to win 5 rounds takes the series.'
-        return;
-    } else if(playerSelection.toLowerCase() === "rock" || playerSelection.toLowerCase() === "paper" || playerSelection.toLowerCase() === "scissors") {
-        document.querySelector('.roundResult').innerText = playRound(playerSelection, computerSelection);
-        document.querySelector('.playerScore').innerText = myScore;
-        document.querySelector('.enemyScore').innerText = computerScore;
-        if(myScore === 5) {
-            document.querySelector('.seriesResult').innerText = 'You won!';
-            resetScore();
-        } else if(computerScore === 5) {
-            document.querySelector('.seriesResult').innerText = 'You lost!';
-            resetScore();
-        }
-    } else {
-        game();
+
+    document.querySelector('.roundResult').innerText = playRound(playerSelection, computerSelection);
+    document.querySelector('.playerScore').innerText = myScore;
+    document.querySelector('.enemyScore').innerText = computerScore;
+    if(myScore === 5) {
+        document.querySelector('.seriesResult').innerText = 'You won the series!';
+        document.querySelectorAll('.play').forEach((button) => {
+            button.removeEventListener('click', game);
+        });
+        // document.querySelector('.paper').removeEventListener('click', game);
+        // document.querySelector('.scissors').removeEventListener('click', game);
+    } else if(computerScore === 5) {
+        document.querySelector('.seriesResult').innerText = 'You lost the series!';
+        document.querySelectorAll('.play').forEach((button) => {
+            button.removeEventListener('click', game);
+        });
+        // document.querySelector('.paper').removeEventListener('click', game);
+        // document.querySelector('.scissors').removeEventListener('click', game);
     }
 }
 
-function resetScore() {
+function resetAll() {
     myScore = 0, computerScore = 0;
     document.querySelector('.playerScore').innerText = myScore;
     document.querySelector('.enemyScore').innerText = computerScore;
+    document.querySelector('.startGame').innerText = 'Press any of the buttons to start playing against computer. First one to win 5 rounds takes the series!';
+    document.querySelector('.playerMove').innerText = '';
+    document.querySelector('.enemyMove').innerText = '';
+    document.querySelector('.seriesResult').innerText = '';
+    document.querySelector('.roundResult').innerText = '';
+    document.querySelectorAll('.play').forEach((button) => {
+        button.addEventListener('click', game);
+    });
 }
 
-document.querySelector('.rock').addEventListener('click', game);
-document.querySelector('.paper').addEventListener('click', game);
-document.querySelector('.scissors').addEventListener('click', game);
+
+document.querySelectorAll('.play').forEach((button) => {
+    button.addEventListener('click', game);
+});
+document.querySelector('.reset').addEventListener('click', resetAll);
