@@ -1,3 +1,5 @@
-A simple Rock-Paper-Scissors game against computer. HTML and Javascript is implemented except CSS. Will do it soon.
+A simple Rock-Paper-Scissors game against computer.
+
+UI will be implemented soon.
 
 Live link: https://tazwarmohammed.github.io/rock-paper-scissors/
