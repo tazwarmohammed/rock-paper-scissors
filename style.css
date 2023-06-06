@@ -1,11 +1,16 @@
+div {
+    margin: 10px;
+}
+
 footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: rgb(3, 3, 78);
+    background-color: black;
     color: white;
     text-align: center;
-    padding: 5%;
-    font-size: x-large;
+    padding: 20px;
+    font-size: 20px;
 }
+
